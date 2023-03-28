@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -5,17 +6,44 @@ using UnityEngine;
 public class BatScript : MonoBehaviour
 {
 
-    public Rigidbody2D bat;
-    public LayerMask mask;
+   [SerializeField] Rigidbody2D bat;
+    bool isMouseClick;
 
-    // Update is called once per frame
-    void Update()
+    // public void Start()
+    //{
+    //    bat = GetComponent<Rigidbody2D>();
+    //}
+
+    // public void DragBat(Vector2 point)
+    //{
+    //    Rigidbody2D bats = GetComponent<Rigidbody2D>();
+    //    bats.MovePosition(point);
+    //}
+    //private void OnMouseDown()
+    //{
+    //    isMouseClick = true;
+    //}
+
+    //private void OnMouseUp()
+    //{
+    //    isMouseClick = false;
+    //}
+
+
+    private void OnMouseEnter()
     {
-        if (Input.GetMouseButtonDown(0))
+        isMouseClick = true;
+    }
+    private void OnMouseExit()
+    {
+        isMouseClick = false;
+    }
+    public void OnMouseDrag()
+    {
+        if (isMouseClick == true)
         {
-            RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, mask);
-
-            bat.MovePosition(hit.point);
+            Vector2 dir = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            bat.MovePosition(dir);
         }
     }
 }

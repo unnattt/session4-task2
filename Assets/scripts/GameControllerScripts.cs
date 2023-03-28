@@ -7,45 +7,49 @@ public class GameControllerScripts : MonoBehaviour
     public GameObject ball;
     public GameObject bat;
 
-    public LayerMask mask;
-    public RaycastHit hitting;
+    float nextBallThrown;
+    float ballThorwnRate = 4f;
+    //public LayerMask mask;
+    //public RaycastHit hitting;
 
-    private void Start()
-    {
+    //private void Start()
+    //{
 
-    }
+    //}
 
     void Update()
     {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            ballsThrown();
-        }
+
+        ballsThrown();
+            //rayCastBat();
     }
 
     public void ballsThrown()
     {
-        GameObject any = Instantiate(ball, ball.transform.position, ball.transform.rotation);
-        ballThorwn obj = any.GetComponent<ballThorwn>();
-        obj.BallForce();
-        Destroy(any, 3f);
+        if (Time.time > nextBallThrown)
+        {
+            GameObject any = Instantiate(ball, ball.transform.position, ball.transform.rotation);
+            ballThorwn obj = any.GetComponent<ballThorwn>();
+            obj.BallForce();
+            nextBallThrown = Time.time + ballThorwnRate;
+           
+            Destroy(any, 4f);
+        }
     }
 
     //public void rayCastBat()
     //{
-    //    RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.))
-    //    //Debug.Log(ray);
-
-    //    if (Physics.Raycast(ray, out hitting, 60f, mask))
+    //    if (Input.GetMouseButtonDown(0))
     //    {
+    //        GameObject any = bat;
+    //        BatScript obj = any.GetComponent<BatScript>();
 
+    //        RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, 10f, mask);
 
-    //        if (Input.GetMouseButtonDown(0))
-    //        {
-
-    //        }
-
+    //        obj.DragBat(hit.point);
     //    }
+
     //}
+
 }
 
