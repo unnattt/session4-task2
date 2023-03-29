@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
+
 
 public class GameControllerScripts : MonoBehaviour
 {
@@ -9,6 +11,12 @@ public class GameControllerScripts : MonoBehaviour
 
     float nextBallThrown;
     float ballThorwnRate = 4f;
+
+    public static int ScoreValue = 0;
+    public Text Runs;
+
+    Vector2 random;
+   public  GameObject pointer;
     //public LayerMask mask;
     //public RaycastHit hitting;
 
@@ -19,7 +27,7 @@ public class GameControllerScripts : MonoBehaviour
 
     void Update()
     {
-
+        Runs.text = "Run: " + ScoreValue;
         ballsThrown();
             //rayCastBat();
     }
@@ -28,9 +36,13 @@ public class GameControllerScripts : MonoBehaviour
     {
         if (Time.time > nextBallThrown)
         {
+            random.x = Random.Range(-4f, 0f);
+            random.y = Random.Range(-4.74f,-4.74f);
+            pointer.transform.position = random;
+
             GameObject any = Instantiate(ball, ball.transform.position, ball.transform.rotation);
             ballThorwn obj = any.GetComponent<ballThorwn>();
-            obj.BallForce();
+            obj.BallForce(pointer.transform.position);
             nextBallThrown = Time.time + ballThorwnRate;
            
             Destroy(any, 4f);

@@ -12,10 +12,14 @@ public class ballThorwn : MonoBehaviour
         rb = GetComponent<Rigidbody2D>();
     }
     
-   public  void BallForce()
+   public  void BallForce(Vector2 pos)
     {
         Rigidbody2D ball = GetComponent<Rigidbody2D>();
-        ball.AddForce(Vector2.left * speed);
+        // ball.AddForce((pos - (Vector2)transform.position) * Force);
+        Vector2 target = pos - (Vector2)transform.position* speed;
+        Debug.Log("target " + target);
+        ball.velocity = target;
+       // ball.AddForce(target * force);
     }
 
 
