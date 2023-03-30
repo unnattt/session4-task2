@@ -16,7 +16,6 @@ public class GameControllerScripts : MonoBehaviour
     public Text Runs;
 
     Vector2 random;
-   public  GameObject pointer;
     //public LayerMask mask;
     //public RaycastHit hitting;
 
@@ -24,10 +23,10 @@ public class GameControllerScripts : MonoBehaviour
     //{
 
     //}
-
+    
     void Update()
     {
-        Runs.text = "Run: " + ScoreValue;
+        Runs.text = "Your Runs: " + ScoreValue;
         ballsThrown();
             //rayCastBat();
     }
@@ -36,19 +35,16 @@ public class GameControllerScripts : MonoBehaviour
     {
         if (Time.time > nextBallThrown)
         {
-            random.x = Random.Range(-4f, 0f);
+            random.x = Random.Range(-4f, -1f);
             random.y = Random.Range(-4.74f,-4.74f);
-            pointer.transform.position = random;
 
             GameObject any = Instantiate(ball, ball.transform.position, ball.transform.rotation);
             ballThorwn obj = any.GetComponent<ballThorwn>();
-            obj.BallForce(pointer.transform.position);
+            obj.BallForce(random);
             nextBallThrown = Time.time + ballThorwnRate;
-           
             Destroy(any, 4f);
         }
     }
-
     //public void rayCastBat()
     //{
     //    if (Input.GetMouseButtonDown(0))
