@@ -17,12 +17,6 @@ public class GameControllerScripts : MonoBehaviour
 
     Vector2 random;
     //public LayerMask mask;
-    //public RaycastHit hitting;
-
-    //private void Start()
-    //{
-
-    //}
     
     void Update()
     {
@@ -52,7 +46,7 @@ public class GameControllerScripts : MonoBehaviour
     //        GameObject any = bat;
     //        BatScript obj = any.GetComponent<BatScript>();
 
-    //        RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.mousePosition), Vector2.zero, 10f, mask);
+    //        RaycastHit2D hit = Physics2D.Raycast(Camera.main.ScreenToWorldPoint(Input.), Vector2.zero, 10f, mousePositionmask);
 
     //        obj.DragBat(hit.point);
     //    }

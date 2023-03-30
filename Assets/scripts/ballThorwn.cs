@@ -20,9 +20,7 @@ public class ballThorwn : MonoBehaviour
         // ball.AddForce((pos - (Vector2)transform.position) * Force);
         Vector2 target = (pos - (Vector2)transform.position).normalized;
         ball.velocity = target * speed;
-        
-       
-       // ball.AddForce(target * force);
+        // ball.AddForce(target * force);
     }
 
 
