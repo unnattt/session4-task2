@@ -19,7 +19,6 @@ public class ballThorwn : MonoBehaviour
         Rigidbody2D ball = GetComponent<Rigidbody2D>();
         // ball.AddForce((pos - (Vector2)transform.position) * Force);
         Vector2 target = (pos - (Vector2)transform.position).normalized;
-        Debug.Log("target " + target);
         ball.velocity = target * speed;
         
        

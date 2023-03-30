@@ -35,7 +35,7 @@ public class GameControllerScripts : MonoBehaviour
     {
         if (Time.time > nextBallThrown)
         {
-            random.x = Random.Range(-4f, -1f);
+            random.x = Random.Range(-4f, -2f);
             random.y = Random.Range(-4.74f,-4.74f);
 
             GameObject any = Instantiate(ball, ball.transform.position, ball.transform.rotation);

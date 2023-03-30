@@ -6,9 +6,26 @@ using UnityEngine;
 public class BatScript : MonoBehaviour
 {
 
-   [SerializeField] Rigidbody2D bat;
+    [SerializeField] Rigidbody2D bat;
     bool isMouseClick;
 
+    private void OnMouseEnter()
+    {
+        isMouseClick = true;
+    }
+    private void OnMouseExit()
+    {
+        isMouseClick = false;
+    }
+    public void OnMouseDrag()
+    {
+        if (isMouseClick == true)
+        {
+            Vector2 dir = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+            bat.MovePosition(dir);
+        }
+    }
+}
     // public void Start()
     //{
     //    bat = GetComponent<Rigidbody2D>();
@@ -28,25 +45,6 @@ public class BatScript : MonoBehaviour
     //{
     //    isMouseClick = false;
     //}
-
-
-    private void OnMouseEnter()
-    {
-        isMouseClick = true;
-    }
-    private void OnMouseExit()
-    {
-        isMouseClick = false;
-    }
-    public void OnMouseDrag()
-    {
-        if (isMouseClick == true)
-        {
-            Vector2 dir = Camera.main.ScreenToWorldPoint(Input.mousePosition);
-            bat.MovePosition(dir);
-        }
-    }
-}
        
 
     
